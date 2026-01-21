@@ -1,0 +1,289 @@
+const services = [
+  {
+    title: "Protocol Design & Architecture",
+    description: "Design resilient on-chain systems with clear governance and failure boundaries.",
+    bullets: [
+      "Blockchain protocol design",
+      "On-chain and off-chain architecture",
+      "Upgradeability and governance patterns",
+      "Threat modeling and failure analysis",
+    ],
+  },
+  {
+    title: "Smart Contract Engineering",
+    description: "Build production-ready Solidity systems with predictable execution and upgrade paths.",
+    bullets: [
+      "Solidity (EVM) development",
+      "Production-ready contracts",
+      "Gas optimization",
+      "Upgrade patterns (UUPS, Diamond, etc.)",
+    ],
+  },
+  {
+    title: "DeFi & Token Mechanics",
+    description: "Design economic systems that are coherent under stress and adversarial conditions.",
+    bullets: [
+      "AMMs, lending, staking, vesting",
+      "Tokenomics design and review",
+      "Incentive alignment",
+      "Economic attack vectors",
+    ],
+  },
+  {
+    title: "Identity, Attestation & Compliance",
+    description: "Implement identity and attestations with strict access control and auditability.",
+    bullets: [
+      "DID and on-chain identity systems",
+      "Attestation frameworks",
+      "Access control and gating",
+      "Compliance-aware architecture",
+    ],
+  },
+  {
+    title: "Cross-Chain & Infrastructure",
+    description: "Ship interoperability and deployment infrastructure for multi-chain systems.",
+    bullets: [
+      "Cross-chain messaging",
+      "Bridges and interoperability",
+      "Deployment automation",
+      "CI/CD for smart contracts",
+    ],
+  },
+  {
+    title: "Code Review, Cleanup & Audits",
+    description: "Prepare codebases for production through rigorous review and refactoring.",
+    bullets: [
+      "Pre-audit reviews",
+      "Legacy contract cleanup",
+      "Refactors and test coverage",
+      "Deployment readiness checks",
+    ],
+  },
+];
+
+const steps = [
+  "Technical scoping call",
+  "Architecture and risk review",
+  "Implementation or review",
+  "Deployment and handover",
+  "Optional long-term advisory",
+];
+
+const demos = [
+  { name: "Cross-chain messaging demo (placeholder)", href: "#" },
+  { name: "ZKP verification flow (placeholder)", href: "#" },
+  { name: "DeFi vault mechanics (placeholder)", href: "#" },
+];
+
+const trustedBy = [
+  "Protocol One",
+  "Layer Two Lab",
+  "DeFi Studio",
+  "Identity Network",
+  "Infrastructure Partner",
+  "Security Research Group",
+];
+
+export default function Home() {
+  return (
+    <main className="min-h-screen text-ink">
+      <section className="border-b border-border bg-gradient-to-b from-surface via-white to-white">
+        <div className="mx-auto max-w-6xl px-6 pb-24 pt-28">
+          <div className="flex flex-wrap items-center justify-between gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-muted">
+            Stevens Blockchain Advisory
+            <span className="rounded-full border border-border bg-white/80 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.35em] text-ink">
+              Protocol systems
+            </span>
+          </div>
+          <div className="mt-8 h-1 w-12 rounded-full bg-accent" aria-hidden />
+          <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-tight text-ink md:text-5xl">
+            Production-grade Web3 engineering &amp; protocol advisory
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg text-muted">
+            Design, implementation, and review of blockchain systems — from smart contracts
+            to cross-chain architecture.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              className="inline-flex items-center justify-center rounded-md border border-border bg-accent px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              href="#contact"
+            >
+              Get in touch
+            </a>
+            <a
+              className="inline-flex items-center justify-center rounded-md border border-border bg-white/90 px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              href="#services"
+            >
+              View services
+            </a>
+          </div>
+          <div className="mt-16 grid gap-6 text-sm text-muted md:grid-cols-3">
+            <div className="rounded-lg border border-border bg-gradient-to-br from-white/80 via-surface/60 to-surface p-5 shadow-sm">
+              <p className="text-base font-semibold text-ink">10 years</p>
+              <p>Operating in Web3</p>
+            </div>
+            <div className="rounded-lg border border-border bg-gradient-to-br from-white/80 via-surface/60 to-surface p-5 shadow-sm">
+              <p className="text-base font-semibold text-ink">ZKPs &amp; FHE</p>
+              <p>Experience with Zama tooling</p>
+            </div>
+            <div className="rounded-lg border border-border bg-gradient-to-br from-white/80 via-surface/60 to-surface p-5 shadow-sm">
+              <p className="text-base font-semibold text-ink">Production focus</p>
+              <p>Multi-chain deployments and real users</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="border-b border-border bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+              Services
+            </p>
+            <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
+            <h2 className="mt-6 text-3xl font-semibold text-ink">Core capabilities</h2>
+            <p className="mt-4 text-base text-muted">
+              A clear service taxonomy designed for protocol teams and CTOs who need
+              production-grade delivery.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="rounded-lg border border-border bg-white/95 p-6 shadow-sm"
+              >
+                <h3 className="text-lg font-semibold text-ink">{service.title}</h3>
+                <p className="mt-3 text-sm text-muted">{service.description}</p>
+                <ul className="mt-4 space-y-2 text-sm text-ink">
+                  {service.bullets.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="process" className="border-b border-border bg-surface">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+            How we work
+          </p>
+          <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
+          <h2 className="mt-6 text-3xl font-semibold text-ink">
+            Structured engagement, minimal noise
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-5">
+            {steps.map((step, index) => (
+              <div key={step} className="rounded-lg border border-border bg-white/90 p-5">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">{`0${
+                  index + 1
+                }`}</div>
+                <p className="mt-4 text-sm text-ink">{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="border-b border-border bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+            About
+          </p>
+          <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
+          <h2 className="mt-6 text-3xl font-semibold text-ink">
+            Stevens Blockchain Advisory
+          </h2>
+          <p className="mt-6 max-w-3xl text-base text-muted">
+            We are a technical consulting firm focused on production blockchain systems,
+            smart contract engineering, and protocol architecture. Our work spans DeFi,
+            identity, and cross-chain systems, with a focus on real users and multi-chain
+            deployments. We bring 10 years of Web3 experience and deep expertise in ZKPs
+            and FHE with Zama tooling.
+          </p>
+          <p className="mt-4 max-w-3xl text-base text-muted">
+            Background includes work with major Web3 protocols and startups. We prioritize
+            clarity, code quality, and deployment readiness over marketing.
+          </p>
+        </div>
+      </section>
+
+      <section id="demos" className="border-b border-border bg-surface">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+            Demos
+          </p>
+          <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
+          <h2 className="mt-6 text-3xl font-semibold text-ink">Proof of execution</h2>
+          <p className="mt-4 text-base text-muted">
+            Links will be refined as demos are finalized.
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {demos.map((demo) => (
+              <a
+                key={demo.name}
+                className="flex items-center justify-between rounded-lg border border-border bg-white/95 px-5 py-4 text-sm text-ink shadow-sm"
+                href={demo.href}
+              >
+                <span>{demo.name}</span>
+                <span className="text-muted">Placeholder</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="trusted" className="border-b border-border bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+            Trusted by
+          </p>
+          <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
+          <h2 className="mt-6 text-3xl font-semibold text-ink">
+            Teams that rely on us
+          </h2>
+          <p className="mt-4 text-base text-muted">
+            Logos will be refined as final approvals are secured.
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {trustedBy.map((company) => (
+              <div
+                key={company}
+                className="flex items-center justify-center rounded-lg border border-border bg-white/90 px-6 py-10 text-sm font-semibold text-muted shadow-sm"
+              >
+                {company}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="bg-surface">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+            Contact
+          </p>
+          <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
+          <h2 className="mt-6 text-3xl font-semibold text-ink">Start a conversation</h2>
+          <p className="mt-4 max-w-2xl text-base text-muted">
+            Email is the fastest route. We typically reply within 48 hours.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-6 text-sm">
+            <a
+              className="rounded-md border border-border bg-white/90 px-5 py-3 font-semibold text-ink shadow-sm"
+              href="mailto:contact@stevensba.com"
+            >
+              contact@stevensba.com
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

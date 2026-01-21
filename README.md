@@ -162,11 +162,14 @@ No CV dump. No logos unless you really want to.
 
 ### 6. Demos
 
-**Goal:** Provide proof of execution (to be refined later)
+**Goal:** Demonstrate RWA privacy capabilities with Zama
 
 **Content**
 
-- A simple list of demo links (placeholders for now)
+- CipherMint: compliant confidential ERC-20 POC (Zama), ready and deployed at
+  https://ciphermint.stevensba.com
+- CipherRWA: compliant confidential RWA demo, close to production ready, coming Q1 2026
+- CipherDashboard: dashboard to deploy compliant confidential RWAs, coming Q2 2026
 
 ### 7. Trusted by (logos)
 

@@ -163,7 +163,7 @@ export default function Home() {
   return (
     <main className="min-h-screen text-ink">
       <nav className="sticky top-0 z-50 border-b border-border bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+        <div className="mx-auto flex w-full items-center justify-between px-10 py-3">
           <a
             href="#top"
             className="flex items-center gap-3 text-sm font-semibold text-ink"
@@ -177,20 +177,36 @@ export default function Home() {
             </span>
             Stevens Blockchain Advisory
           </a>
-          <div className="flex flex-wrap items-center gap-6 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-            {navItems.map((item) => (
+          <div className="flex items-center gap-8">
+            <div className="flex flex-wrap items-center gap-8 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={`pb-1 transition ${
+                    activeSection === item.id
+                      ? "border-b-2 border-accent text-ink"
+                      : "border-b-2 border-transparent hover:border-accent/40 hover:text-ink"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+            <div className="hidden items-center gap-3 md:flex">
               <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={`pb-1 transition ${
-                  activeSection === item.id
-                    ? "border-b-2 border-accent text-ink"
-                    : "border-b-2 border-transparent hover:border-accent/40 hover:text-ink"
-                }`}
+                className="inline-flex items-center justify-center rounded-md border border-border bg-white/90 px-4 py-2 text-xs font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                href="#contact"
               >
-                {item.label}
+                Talk to us
               </a>
-            ))}
+              <a
+                className="inline-flex items-center justify-center rounded-md border border-border bg-white/90 px-4 py-2 text-xs font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                href="#demos"
+              >
+                View demos
+              </a>
+            </div>
           </div>
         </div>
       </nav>
@@ -214,6 +230,9 @@ export default function Home() {
             Design, implementation, and review of blockchain systems — from
             smart contracts to cross-chain architecture.
           </p>
+          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+            10 years operating in Web3
+          </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               className="inline-flex items-center justify-center rounded-md border border-border bg-white/90 px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
@@ -227,28 +246,51 @@ export default function Home() {
             >
               View demos
             </a>
-            <a
-              className="inline-flex items-center justify-center rounded-md border border-border bg-white/90 px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              href="#services"
-            >
-              View services
-            </a>
           </div>
-          <div className="mt-16 grid gap-6 text-sm text-muted md:grid-cols-3">
-            <div className="rounded-lg border border-border bg-gradient-to-br from-white/80 via-surface/60 to-surface p-5 shadow-sm">
-              <p className="text-base font-semibold text-ink">10 years</p>
-              <p>Operating in Web3</p>
-            </div>
-            <div className="rounded-lg border border-border bg-gradient-to-br from-white/80 via-surface/60 to-surface p-5 shadow-sm">
-              <p className="text-base font-semibold text-ink">ZKPs &amp; FHE</p>
-              <p>Experience with Zama tooling</p>
-            </div>
-            <div className="rounded-lg border border-border bg-gradient-to-br from-white/80 via-surface/60 to-surface p-5 shadow-sm">
-              <p className="text-base font-semibold text-ink">
-                Production focus
-              </p>
-              <p>Multi-chain deployments and real users</p>
-            </div>
+        </div>
+      </section>
+
+      <section id="demos" className="border-b border-border bg-surface">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+            Demos
+          </p>
+          <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
+          <h2 className="mt-6 text-3xl font-semibold text-ink">
+            RWA privacy demos with Zama
+          </h2>
+          <p className="mt-4 text-base text-muted">
+            Demonstrations of compliant, confidential RWAs built with Zama
+            tooling.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {demos.map((demo) => (
+              <a
+                key={demo.name}
+                className={`flex items-start justify-between rounded-2xl border px-6 py-6 text-sm text-ink shadow-md transition hover:-translate-y-0.5 hover:shadow-lg ${
+                  demo.statusTone === "ready"
+                    ? "border-accent/60 bg-gradient-to-br from-white via-white to-surface/70"
+                    : "border-border bg-white/95"
+                }`}
+                href={demo.href}
+              >
+                <div>
+                  <p className="text-base font-semibold text-ink">
+                    {demo.name}
+                  </p>
+                  <p className="mt-3 text-sm text-muted">{demo.description}</p>
+                </div>
+                <span
+                  className={`rounded-full px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] ${
+                    demo.statusTone === "ready"
+                      ? "bg-emerald-100 text-emerald-700"
+                      : "bg-surface text-muted"
+                  }`}
+                >
+                  {demo.status}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -265,7 +307,8 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-base text-muted">
               A clear service taxonomy designed for protocol teams and CTOs who
-              need production-grade delivery.
+              need production-grade delivery, with deep experience in ZKPs and
+              FHE using Zama tooling.
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -344,52 +387,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="demos" className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
-            Demos
-          </p>
-          <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
-          <h2 className="mt-6 text-3xl font-semibold text-ink">
-            RWA privacy demos with Zama
-          </h2>
-          <p className="mt-4 text-base text-muted">
-            Demonstrations of compliant, confidential RWAs built with Zama
-            tooling.
-          </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {demos.map((demo) => (
-              <a
-                key={demo.name}
-                className={`flex items-start justify-between rounded-2xl border px-6 py-6 text-sm text-ink shadow-md transition hover:-translate-y-0.5 hover:shadow-lg ${
-                  demo.statusTone === "ready"
-                    ? "border-accent/60 bg-gradient-to-br from-white via-white to-surface/70"
-                    : "border-border bg-white/95"
-                }`}
-                href={demo.href}
-              >
-                <div>
-                  <p className="text-base font-semibold text-ink">
-                    {demo.name}
-                  </p>
-                  <p className="mt-3 text-sm text-muted">{demo.description}</p>
-                </div>
-                <span
-                  className={`rounded-full px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] ${
-                    demo.statusTone === "ready"
-                      ? "bg-emerald-100 text-emerald-700"
-                      : "bg-surface text-muted"
-                  }`}
-                >
-                  {demo.status}
-                </span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="trusted" className="border-b border-border bg-white">
+      <section id="trusted" className="border-b border-border bg-surface">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
             Trusted by
@@ -415,7 +413,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="bg-surface">
+      <section id="contact" className="bg-white">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
             Contact

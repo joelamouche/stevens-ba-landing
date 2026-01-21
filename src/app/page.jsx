@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+
 const services = [
   {
     title: "Protocol Design & Architecture",
@@ -76,18 +80,96 @@ const demos = [
 ];
 
 const trustedBy = [
-  "Protocol One",
-  "Layer Two Lab",
-  "DeFi Studio",
-  "Identity Network",
-  "Infrastructure Partner",
-  "Security Research Group",
+  { name: "Consensys", src: "/Consensys_logo_2023.svg.png" },
+  { name: "Dowgo", src: "/dowgo-logo.png" },
+  { name: "PureStake", src: "/purestake-logo.png" },
+  { name: "Compilot", src: "/compilot-logo.svg" },
+  { name: "Hypernet", src: "/hypernet-logo.png" },
+  { name: "Vibe Bio", src: "/vibe-bio-logo.webp" },
 ];
 
 export default function Home() {
+  const navItems = useMemo(
+    () => [
+      { id: "top", label: "Overview" },
+      { id: "services", label: "Services" },
+      { id: "process", label: "How we work" },
+      { id: "about", label: "About" },
+      { id: "demos", label: "Demos" },
+      { id: "trusted", label: "Trusted" },
+      { id: "contact", label: "Contact" },
+    ],
+    []
+  );
+  const [activeSection, setActiveSection] = useState("top");
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.id))
+      .filter(Boolean);
+    if (!sections.length) {
+      return;
+    }
+
+    const updateActive = () => {
+      const offset = 120;
+      let current = sections[0]?.id ?? "top";
+      for (const section of sections) {
+        const top = section.getBoundingClientRect().top;
+        if (top - offset <= 0) {
+          current = section.id;
+        } else {
+          break;
+        }
+      }
+      setActiveSection(current);
+    };
+
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
+  }, [navItems]);
+
   return (
     <main className="min-h-screen text-ink">
-      <section className="border-b border-border bg-gradient-to-b from-surface via-white to-white">
+      <nav className="sticky top-0 z-50 border-b border-border bg-white/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <a href="#top" className="flex items-center gap-3 text-sm font-semibold text-ink">
+            <span className="flex items-center justify-center">
+              <img
+                src="/sba-logo.png"
+                alt="Stevens Blockchain Advisory logo"
+                className="h-10 w-10"
+              />
+            </span>
+            Stevens Blockchain Advisory
+          </a>
+          <div className="flex flex-wrap items-center gap-6 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`pb-1 transition ${
+                  activeSection === item.id
+                    ? "border-b-2 border-accent text-ink"
+                    : "border-b-2 border-transparent hover:border-accent/40 hover:text-ink"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      <section
+        id="top"
+        className="border-b border-border bg-gradient-to-b from-surface via-white to-white"
+      >
         <div className="mx-auto max-w-6xl px-6 pb-24 pt-28">
           <div className="flex flex-wrap items-center justify-between gap-6 text-xs font-semibold uppercase tracking-[0.3em] text-muted">
             Stevens Blockchain Advisory
@@ -248,16 +330,17 @@ export default function Home() {
           <h2 className="mt-6 text-3xl font-semibold text-ink">
             Teams that rely on us
           </h2>
-          <p className="mt-4 text-base text-muted">
-            Logos will be refined as final approvals are secured.
-          </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {trustedBy.map((company) => (
               <div
-                key={company}
-                className="flex items-center justify-center rounded-lg border border-border bg-white/90 px-6 py-10 text-sm font-semibold text-muted shadow-sm"
+                key={company.name}
+                className="flex items-center justify-center rounded-lg border border-border bg-white/90 px-6 py-12 text-sm font-semibold text-muted shadow-sm"
               >
-                {company}
+                <img
+                  src={company.src}
+                  alt={`${company.name} logo`}
+                  className="h-12 max-w-[200px] object-contain"
+                />
               </div>
             ))}
           </div>

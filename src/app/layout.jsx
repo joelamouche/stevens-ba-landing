@@ -9,6 +9,11 @@ const inter = Inter({
 export const metadata = {
   title: "Stevens Blockchain Advisory",
   description: "Production-grade Web3 engineering & protocol advisory.",
+  icons: {
+    icon: "/sba-logo.png",
+    shortcut: "/sba-logo.png",
+    apple: "/sba-logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {

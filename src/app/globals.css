@@ -11,3 +11,7 @@ body {
 ::selection {
   background-color: rgba(231, 180, 77, 0.28);
 }
+
+section {
+  scroll-margin-top: 96px;
+}

@@ -224,7 +224,7 @@ export default function Home() {
           </div>
           <div className="mt-8 h-1 w-12 rounded-full bg-accent" aria-hidden />
           <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-tight text-ink md:text-5xl">
-            Production-grade Web3 engineering &amp; protocol advisory
+            Production-grade web3 engineering &amp; protocol advisory
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted">
             Design, implementation, and review of blockchain systems — from

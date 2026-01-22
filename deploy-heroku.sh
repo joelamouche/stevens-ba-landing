@@ -14,7 +14,11 @@ if ! heroku apps:info --app "$APP_NAME" >/dev/null 2>&1; then
 fi
 
 heroku git:remote --app "$APP_NAME" --remote heroku
-heroku buildpacks:set heroku/nodejs --app "$APP_NAME"
+
+CURRENT_BUILDPACKS="$(heroku buildpacks --app "$APP_NAME" 2>/dev/null || true)"
+if ! echo "$CURRENT_BUILDPACKS" | grep -q "heroku/nodejs"; then
+  heroku buildpacks:set heroku/nodejs --app "$APP_NAME"
+fi
 
 CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 echo "Deploying branch '$CURRENT_BRANCH' to Heroku app '$APP_NAME'..."

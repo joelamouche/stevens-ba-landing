@@ -118,10 +118,10 @@ export default function Home() {
   const navItems = useMemo(
     () => [
       { id: "top", label: "Overview" },
+      { id: "demos", label: "Demos" },
       { id: "services", label: "Services" },
       { id: "process", label: "How we work" },
       { id: "about", label: "About" },
-      { id: "demos", label: "Demos" },
       { id: "trusted", label: "Trusted" },
       { id: "contact", label: "Contact" },
     ],

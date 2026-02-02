@@ -125,7 +125,7 @@ export default function Home() {
       { id: "trusted", label: "Trusted" },
       { id: "contact", label: "Contact" },
     ],
-    [],
+    []
   );
   const [activeSection, setActiveSection] = useState("top");
 
@@ -139,6 +139,15 @@ export default function Home() {
 
     const updateActive = () => {
       const offset = 120;
+      const isBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 4;
+
+      if (isBottom) {
+        setActiveSection(sections[sections.length - 1]?.id ?? "contact");
+        return;
+      }
+
       let current = sections[0]?.id ?? "top";
       for (const section of sections) {
         const top = section.getBoundingClientRect().top;

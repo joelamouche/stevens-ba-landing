@@ -265,9 +265,16 @@ export default function Home() {
             Demos
           </p>
           <div className="mt-4 h-1 w-10 rounded-full bg-accent" aria-hidden />
-          <h2 className="mt-6 text-3xl font-semibold text-ink">
-            RWA privacy demos with Zama
-          </h2>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <h2 className="text-3xl font-semibold text-ink">
+              RWA privacy demos with Zama
+            </h2>
+            <img
+              src="/zama-logo.png"
+              alt="Zama"
+              className="h-8 w-8 object-contain"
+            />
+          </div>
           <p className="mt-4 text-base text-muted">
             Demonstrations of compliant, confidential RWAs built with Zama
             tooling.
@@ -317,8 +324,21 @@ export default function Home() {
             <p className="mt-4 text-base text-muted">
               A clear service taxonomy designed for protocol teams and CTOs who
               need production-grade delivery, with deep experience in ZKPs and
-              FHE using Zama tooling.
+              FHE using Zama tooling, plus proficiency with ERC-3643 for
+              compliant RWAs.
             </p>
+            <div className="mt-4 flex items-center gap-4">
+              <img
+                src="/zama-logo.png"
+                alt="Zama"
+                className="h-7 w-7 object-contain"
+              />
+              <img
+                src="/erc3643.png"
+                alt="ERC-3643"
+                className="h-7 w-7 object-contain"
+              />
+            </div>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {services.map((service) => (
